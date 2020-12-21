@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>cSpeed</title>
+    <link rel="stylesheet" href="css/semantic.css"/>
+    <link rel="stylesheet" href="css/pacer-theme.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
+  </head>
+  <body id="example" ng-controller="TimerCtrl" ng-cloak>
+    <!-- Information about test -->
+    <div ng-include="'partials/introduction.html'" ng-hide="status!='Run cSpeed to find out!'"></div>
+    <div id="headerResults" ng-show="status!='Run cSpeed to find out!'">
+      <h1>cSpeed</h1>
+    </div>
+    <div class="loadingWeb" ng-show="false">
+      Loading <a href="">{{currentTest.link}}</a>
+      <timer autostart="false" interval="20"/>{{millis}} ms
+    </div>
+    <!-- End of Info -->
+    <!-- Loading icon -->
+    <div ng-show="currentTest" class="pace pace-active"><div class="pace-progress" data-progress="{{finishedTest.length/(tests.length+2)*100|number:1}}" data-progress-text="{{finishedTest.length - 1}} / {{tests.length}}" style="width: 40%;"><div class="pace-progress-inner"></div></div><div class="pace-activity"></div></div>
+    <!-- End of Loading icon -->
+    <div class="container">
+      <!-- Test report -->
+      <div class="fx-zoom-normal fx-easing-sine fx-speed-500" style="margin-bottom: 10em;" ng-show="report.summary">
+        <div class="item">
+          <div class="content">
+            <!-- Grade  -->
+            <div class="ui grid">
+              <!--div class="one wide column"></div-->
+              <div class="two wide column"></div>
+              <div class="three wide column">
+                <div style="text-align: center; font-size: 7em" ng-style="{color: grades[report.grade].color}">{{grades[report.grade].letter}}</div>
+              </div>
+              <div class="eight wide column">
+                <h2>{{grades[report.grade].comment}}</h2>
+              </div>
+            </div>
+            <!-- End of Grade -->
+            <div style="text-align:center; margin-bottom:10px; font-size:1.5em">
+              <p ng-show="region.count>1">Your test took <b>{{report.summary.comparation.value}}% {{report.summary.comparation.key}}</b> to finish than the typical cSpeed user worldwide,<br> and <b>{{report.region.comparation.value}}% {{report.region.comparation.key}}</b> to finish than the typical cSpeed user in {{user_ip.city}}.</p>
+              <p ng-hide="region.count>1">Your test took <b>{{report.summary.comparation.value}}% {{report.summary.comparation.key}}</b> to finish than the typical cSpeed user worldwide.</p>
+              <div id="chart_total" ng-show="report.summary" ng-hide="!report.summary"></div><br>
+            </div><br><br><br>
+            <div style="text-align:center; font-size:1.5em">
+              <div ng-show="report.region.count>1">
+                <p ng-show="user_ip.isp==report.region.fastest">Across tests run in {{user_ip.city}}, those using the <b>{{report.region.fastest}}</b> network<br>(like yourself) finish the test fastest.</p>
+                <p ng-hide="user_ip.isp==report.region.fastest">Across tests run in {{user_ip.city}}, those using the <b>{{report.region.fastest}}</b> network<br> finish the test fastest, typically finishing <b>{{report.region.fastestComparation.value}}% faster</b> than {{user_ip.isp}} users.</p>
+                <div id="chart_isp"></div>
+              </div>
+              <div class="ui huge warning message" style="margin: 0 3em" ng-hide="report.region.count>1">
+                <p>In {{user_ip.city}}, tests have only been run over the {{user_ip.isp}} network. Ask your friends to run the test for a comparison!!</p>
+              </div><br><br><br>
+            </div>
+            <!-- Feedback -->
+            <div class="fx-fade-normal fx-easing-sine fx-speed-500 ui form" style="padding: 0 10em" ng-hide="formSubmitted">
+              <!--div ng-include="'partials/feedback.html'"></div-->
+            </div>
+            <!-- End of feedback -->
+            <div class="fx-fade-normal fx-easing-sine fx-speed-500 ui huge green message" style="width: 84%; margin: auto;" ng-show="formSubmitted">
+              <div class="header" style="text-align: center">
+                Thank you for your feedback!
+              </div>
+            </div>
+            <div class="ui form" style="margin-top: 5em">
+              <!--div class="ui black button" style="width:47%; margin-right: 5.6%" ng-show="history" ng-click="showHistory()">View Previous Test Results</div-->
+              <div class="introbutton" style="width:40%; margin-left: 25%; text-align: center" ng-click="startTest()">{{status}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of test Report -->
+      <!-- Individual result -->
+      
+      <div class="test fx-fade-down fx-easing-sine fx-speed-1000" ng-repeat="test in finishedTest" ng-click="selectTest(test)">
+        <span style="position:relative; left: 5%; bottom:0.6em; float: left;"><b>{{test.showName}}</b></span>
+        <div class="number-pb" style="left:30%; width:65%">
+          <!-- User test -->
+          <div class="number-pb-shown" style="width: {{test.time / 150}}%; overflow: visible; box-sizing: content-box; min-width: 0px; max-width: none; height: 10px; min-height: 0px; max-height: none; padding-left: 0px;"></div>
+          <div class="number-pb-num" style="top: -0.25em; left: {{test.time / 150}}%; overflow: visible; box-sizing: content-box; width: 20px; min-width: 20px; max-width: none; height: 19px; min-height: 0px; max-height: none; padding-left: 5px;z-index: 200; color:blueviolet; font-weight: bold;" ng-hide="test.time >= 15000">{{test.time/1000|number: 1}}s</div>
+          <div class="number-pb-num" style="top: -0.25em; left: 100%; overflow: visible; box-sizing: content-box; width: 80px; min-width: 20px; max-width: none; height: 19px; min-height: 0px; max-height: none; padding-left: 5px;z-index: 200; color:blueviolet; font-weight: bold;" ng-show="test.time >= 15000">Time out</div>
+          <!-- End of user test -->
+          <!-- Other test -->
+          <div class="number-pb-shown" style="width: 5px; left: {{total[test.name] / 150}}%;overflow: visible; box-sizing: content-box; min-width: 0px; max-width: none; height: 10px; min-height: 0px; max-height: none; padding-left: 0px;background-color: #BBBBBB;z-index: 100;"  ng-show="currentTest!=test"></div>
+          <div class="number-pb-num" style="top: -1.7em; left: {{total[test.name] / 150 - 5}}%; overflow: visible; box-sizing: content-box; width: 80px; min-width: 20px; max-width: none; height: 19px; min-height: 0px; max-height: none; padding-left: 5px;z-index: 200; color: #AAAAAA"  ng-show="currentTest!=test">Average: {{total[test.name]/1000|number: 1}}s</div>
+          <!-- End of other test -->
+        </div>
+      </div>
+      <!-- End of Individual result -->
+    </div>
+    <ng-include src="modal"></ng-include>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jsapi.js"></script>
+    <script src="lib/store.min.js"></script>
+    <script src="lib/semantic.min.js"></script>
+    <script src="lib/TweenMax.min.js"></script>
+    <script src="lib/firebase.js"></script>
+    <script src="lib/firebase-database.js"></script>
+    <script src="lib/purl.js"></script>
+    <script src="lib/benchmark.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-route.js"></script>
+    <script src="lib/angular/angular-animate.js"></script>
+    <script src="lib/timer.js"></script>
+    <script src="lib/ng-Fx.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+  </body>
+</html>

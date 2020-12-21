@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>cSpeed FAQ</title>
+    <link rel="stylesheet" href="css/semantic.css"/>
+    <link rel="stylesheet" href="css/pacer-theme.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
+  </head>
+  <body id="example">
+  <div id="headerResults"><h1>cSpeed</h1></div>
+  <div style="width:800px; margin:0 auto;">
+
+  <div class="faqq">How is this test useful to me, the user?</div>
+  <div class="faqa">cSpeed gives you information about the quality of your Web browsing experience. It also compares your test results to those of other users globally, as well as in your city, showing, for example, the time in which typical users of networks (ISPs) other than yours finish the test. This can possibly help you pick an ISP better suited to your needs, although other factors such as your device and transient network conditions also impact test results. As the number of cSpeed users grows, we hope to be able to account for these factors.</div>
+
+  <div class="faqq">How were the test Web pages chosen?</div>
+  <div class="faqa">All of the Web pages were ranked in the top 200 most popular <a href="http://www.alexa.com">Alexa</a> Web pages list. We only included Web pages that were safe-for-work and trusted.</div>
+
+  <div class="faqq">Who develops and maintains cSpeed?</div>
+  <div class="faqa">cSpeed is developed and maintained by Xuefeng Zhu, <a href="http://web.engr.illinois.edu/~singla2/">Ankit Singla</a>, and <a href="http://web.engr.illinois.edu/~pbg/">P. Brighten Godfrey</a>, computer scientists at <a href="http://cs.illinois.edu/">University of Illinois Urbana-Champaign</a>.</div>
+
+  <div class="faqq">OK, how will you build a speed-of-light Internet? Seems crazy!</div>
+  <div class="faqa">That is precisely what we are working on figuring out! Ambitious, but not crazy. A research effort along these lines is being undertaken in collaboration by <a href="http://web.engr.illinois.edu/~singla2/">Ankit Singla</a>, and <a href="http://web.engr.illinois.edu/~pbg/">P. Brighten Godfrey</a> at <a href="http://cs.illinois.edu/">University of Illinois Urbana-Champaign</a>, and <a href="http://www.cs.duke.edu/~balac/">Bala Chandrasekaran</a> and <a href="http://www.cs.duke.edu/~bmm/">Bruce Maggs</a> at <a href="http://www.cs.duke.edu">Duke University</a>. More details <a href="http://cspeed.net">here</a> and <a href="http://speedier.net">here</a>.</div>
+
+  <div class="faqq">What differentiates cSpeed from other tests?</div>
+  <div class="faqa">cSpeed's focus is complementary to tests like speedtest.net, which focus mainly on bandwidth measurements. By loading Web pages and measuring page load times, cSpeed captures the quality of your Web browsing experience directly. Bandwidth tests, on the other hand, are more suitable for assessing how well applications like video streaming (e.g. Netflix) would work on your Internet connection.</div>
+
+  <div class="faqq">How is the 'Hypothetical speed-of-light Internet' time calculated?</div>
+  <div class="faqa">Several simplifications are involved here. We geolocate the Web server that serves the HTML for the landing page of each Web page. Then we calculate the time it would take at the speed of light (in vacuum) to travel to that server's location and back to where cSpeed is being run from. We multiply this time by two to account for resources (images, css, etc.) that the browser might fetch after receiving the first response. This is, obviously, an approximation.</div>
+
+  <div class="faqq">What data does cSpeed send out to the developers?</div>
+  <div class="faqa">We do not collect any data on your Web browsing history, cookies, etc. cSpeed learns your IP address by hitting a free public <a href="http://ip-api.com">service</a>. The same service also supplies public information about your IP address, including your Internet Service Provider (ISP; such as Comcast, TWC, etc.), your city, and your approximate location. We store your IP address, city, and ISP on our servers, together with the timing information for the test -- how long did it take to fetch each Web page and its various pieces. In addition, we store your browser's "user-agent" (which describes your operating system, browser version, etc.) and the results of a computational test to approximately determine javascript performance. This data helps us in our research on building a speed-of-light Internet; thanks for contributing!!</div>
+
+  <!--div class="faqq">Why are the individual page load time bars jumpy?</div-->
+  </div>
+  </body>
+</html>

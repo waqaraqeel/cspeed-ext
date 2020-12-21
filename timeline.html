@@ -1,0 +1,62 @@
+<!-- page for timeline -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Timetree</title>
+  <link rel="stylesheet" href="css/timetree_basic.css">
+  <link rel="stylesheet" href="css/timetree_chrome_devtools.css">
+  <style>
+    html, body {
+      margin: 40px;
+    }
+    header, #app {
+      margin-bottom: 60px;
+    }
+    .title a {
+      color: #333333;
+    }
+    .logo {
+      margin-left: 2px;
+    }
+    .label {
+      margin-left: 20px;
+    }
+    .timetree-view {
+      margin: 20px;
+      display: block;
+    }
+    .timetree-view .label {
+      text-shadow: none;
+    }
+    .example-selection {
+      font-style: italic;
+    }
+    .invisible {
+      visibility: none;
+    }
+  </style>
+
+  </head>
+  <body>
+
+    <div id="app"></div>
+
+    <script type="text/x-handlebars" data-template-name="index">
+      <div class="example">
+        {{view App.ChromeDevToolsTimetreeView contentBinding="App.ApiData" classNames="chrome-devtools-timetree" rowHeight=12}}
+      </div>
+    </script>
+
+
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/handlebars.min.js"></script>
+    <script src="lib/ember.min.js"></script>
+    <script src="lib/d3.min.js"></script>
+    <script src="lib/ember-timetree.min.js"></script>
+
+    <!-- Not required. Just for demo. -->
+    <script src="js/timeline.js"></script>
+
+  </body>
+  </html>

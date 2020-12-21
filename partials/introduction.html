@@ -1,0 +1,26 @@
+<div class="segment" id="introduction">
+	<h1>cSpeed</h1>
+	<h2>How fast is your Internet, really?</h2>
+	<p>cSpeed will benchmark your browsing experience by launching popular Web sites and measuring their</p>
+	<p>load time. Clicking the button below will launch, one after the other, 20 Web sites in new tabs. After</p>
+	<p>launching the test, we recommend waiting for it to finish before you resume browsing. <a class="link" href="">Learn more.</a></p>
+	<div class="introbutton" ng-click="startTest()">{{status}}</div>
+</div>
+<div class="ui introduction modal">
+	<i class="close icon"></i>
+	<div class="header">
+		About cSpeed
+	</div>
+
+	<div id="aboutus">
+	cSpeed tests the quality of your browsing experience by directly measuring how much time it takes to load a list of popular Web pages. <b>cSpeed does not collect any personal Web-browsing information.</b> We do record your IP address, ISP, city, and browser user-agent (which includes your operating system and browser version). We also run a small computational test to measure javascript performance.<br><br>
+				
+	cSpeed was developed by <a href="https://www.linkedin.com/pub/xuefeng-zhu/58/20a/a21">Xuefeng Zhu</a>, <a href="http://web.engr.illinois.edu/~singla2/">Ankit Singla</a>, and <a href="http://web.engr.illinois.edu/~pbg/">P. Brighten Godfrey</a>, computer scientists at <a href="http://cs.illinois.edu/">University of Illinois Urbana-Champaign</a>. This work is part of a larger <a href="http://cspeed.net">speed-of-light Internet project</a> with our collaborators <a href="http://www.cs.duke.edu/~balac/">Bala Chandrasekaran</a> and <a href="http://www.cs.duke.edu/~bmm/">Bruce Maggs</a> at Duke University. The first step, of course, is to measure how fast the Internet is today. We developed cSpeed with twin objectives: (a) to measure Internet speed across a diverse set of users; and (b) to provide you a way of comparing Internet service options in your area. Unlike other 'speed tests', cSpeed directly evaluates your browsing experience by loading Web sites, instead of measuring bandwidth. <a href="faq.html" target="_blank">Learn even more.</a>
+	</div>
+</div>
+<script type="text/javascript">
+$("#introduction").css("height", window.innerHeight);
+$('.introduction.modal')
+  .modal('attach events', '.link', 'show')
+;
+</script>

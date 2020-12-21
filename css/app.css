@@ -1,0 +1,201 @@
+/* app css stylesheet */
+
+
+
+body#example {
+  font-family: "Helvetica Neue", "Open Sans", "Helvetica", "Arial", sans-serif/*rtl:prepend:"Droid Arabic Kufi","Droid Sans", */;
+  /*background: #FCFCFC url(../images/bg.jpg) repeat;*/
+  margin: 0px;
+  padding: 0px;
+  color: #555555;
+  min-width: 320px;
+}
+
+body .container {
+  width: auto;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+body >.segment {
+  margin: 0px 0px 3em;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+#introduction {
+  /*width: 100%;*/
+  background: #000000 url('/images/start.jpg') no-repeat center;
+  background-size: 100% 100%;
+
+  color: white;
+  text-align: center;
+}
+
+.faqq{
+  /*margin-top: 1em;*/
+  margin-bottom: 0.2em;
+  padding-top: 1em;
+  font-size : 1.3em;
+  font-weight:bold;
+  }
+
+.faqa{
+  /*margin-top: 1em;*/
+  margin-bottom: 0.5em;
+  text-align: justify;
+  }
+
+.feedback {
+	margin-top: 0.0em;
+	margin-bottom: 0.5em;
+	padding-top: 0.5em;
+	font-size : 1.4em;
+	font-weight: bold;
+	text-align: center;
+}
+
+
+.loadingWeb {
+	margin-top: 0.0em;
+	margin-bottom: 1.5em;
+	padding-top: 0.8em;
+	padding-bottom: 0.6em;
+	font-size : 1.5em;
+	font-weight: normal;
+	text-align: center;
+}
+
+
+
+#aboutus {
+  margin: 0;
+  padding: 10px 30px 10px 30px;
+  font-size: 1.35em;
+  text-align: justify;
+  line-height: 120%;
+  margin-bottom: 30px;
+}
+
+#introduction p {
+  margin: 0;
+  padding: 1pt 0%;
+  font-size: 1.4em;
+  font-weight:200;
+}
+
+#introduction h1 {
+  margin-top: 0em;
+  margin-bottom: 1em;
+  padding-top: 0.8em;
+  font-size : 6em;
+  font-weight:normal;
+}
+
+#introduction h2 {
+  margin-top: 0em;
+  margin-bottom: 0.6em;
+  padding-top: 0.6em;
+  font-size : 2.3em;
+  font-weight:normal;
+}
+
+.introbutton{
+  border:1px solid #000000; 
+  border-radius: 10px;
+  margin-top: 2.5em;
+  font-size:30px; 
+  padding: 15px 60px 15px 60px; 
+  text-decoration:none;
+  display:inline-block;
+  text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+  font-weight:bold; 
+  color: #FFFFFF;
+  background-color: #7d7e7d; 
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#7d7e7d), to(#0e0e0e));
+  background-image: -webkit-linear-gradient(top, #7d7e7d, #000000);
+  opacity: 0.75;
+  transition: opacity 0.25s ease, background-color 0.25s ease, color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+};
+
+/*--------------
+  Hover
+  ---------------*/
+.introbutton.active:hover {
+  background-image: none;
+  opacity: 0.1;
+  cursor: pointer; cursor: hand;
+}
+
+.introbutton:hover {
+  opacity: 1;
+  cursor: pointer; cursor: hand;
+}
+
+#introduction a {
+  color: white;
+}
+
+#headerResults {
+  background: #000000;
+  /*opacity: 0.6;*/
+  color: white;
+  text-align: center;
+  background: #000000 url('/images/start.jpg') no-repeat;
+  background-size: 100%;
+}
+
+#headerResults h1{
+  margin-top: 0em;
+  margin-bottom: 1em;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  font-size : 5em;
+  font-weight:normal;
+  opacity: 1;
+}
+
+.number-pb {
+  position: relative;
+  height: 10px;
+  background-color: #fbfbfb;
+  margin: 40px 0;
+}
+
+.number-pb .number-pb-shown {
+  position: absolute;
+  background-color: blueviolet;
+  /*background-image: linear-gradient(to right, #176785, #499989);*/
+  top: -1px;
+  left: 0;
+  height: 5px;
+  -moz-box-shadow:    0 0 3px 0 #499989;
+  -webkit-box-shadow: 0 0 3px 0 #499989;
+  box-shadow:         0 0 3px 0 #499989;
+}
+
+.number-pb .number-pb-num {
+  position: absolute;
+  /*background-color: #fff;*/
+  left: 0;
+  top: -0.1em;
+  padding: 0 5px;
+  min-width: 20px;
+}
+
+.number-pb-shown.dream {
+  background-image: linear-gradient(to right, #0e153a, #1d2b64, #f8cdda);
+  -moz-box-shadow:    0 0 3px 0 #f8cdda;
+  -webkit-box-shadow: 0 0 3px 0 #f8cdda;
+  box-shadow:         0 0 3px 0 #f8cdda;
+}
+
+.number-pb-shown.sun {
+  background-image: linear-gradient(to right, #0f1b58, #e0a681, #e5e9bf);
+  -moz-box-shadow:    0 0 3px 0 #e5e9bf;
+  -webkit-box-shadow: 0 0 3px 0 #e5e9bf;
+  box-shadow:         0 0 3px 0 #e5e9bf;
+}
+
