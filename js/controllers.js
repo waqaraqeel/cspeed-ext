@@ -145,6 +145,16 @@ angular.module('myApp.controllers', [])
             if ($scope.currentTest) {
                 return;
             }
+            var sites = '';
+            for (var i = 0; i < tests.length; i++) {
+                sites += '    - ' + tests[i].showName + '\n';
+
+            }
+            var result = confirm('Can we visit the following web sites to measure load time?\n\n' + sites + '\n');
+            if (!result) {
+                return;
+            }
+
             index = 0;
             $scope.currentTest = $scope.tests[index];
             performance.clearResourceTimings(); //clear perfomance statics
